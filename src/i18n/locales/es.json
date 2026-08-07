@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "methodology": "Metodología",
+    "experience": "Experiencia",
+    "education": "Formación",
+    "contact": "Contacto",
+    "toggleTheme": "Cambiar tema",
+    "toggleLang": "Cambiar idioma",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "skipToContent": "Saltar al contenido principal"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Desarrollador Frontend Creativo",
+    "scrollDown": "Desplazar hacia abajo"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "flipButton": "Ver lado personal",
+    "personalSide": "Lado personal",
+    "professionalSide": "Lado profesional",
+    "showPersonal": "Mostrar lado personal",
+    "showProfessional": "Mostrar lado profesional"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "techStack": "Stack Tecnológico",
+    "softSkills": "Habilidades Blandas"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "viewDetails": "Más detalles",
+    "viewGithub": "GitHub",
+    "viewDeploy": "Deploy",
+    "gallery": "Galería del Proyecto",
+    "galleryPlaceholder": "Galería de imágenes y vídeos en construcción",
+    "notFound": "Proyecto no encontrado",
+    "notFoundDescription": "El proyecto que buscas no existe.",
+    "carousel": {
+      "prev": "Slide anterior",
+      "next": "Siguiente slide",
+      "dots": "Navegación de slides",
+      "dot": "Ir a slide"
+    }
+  },
+  "methodology": {
+    "title": "Metodología de trabajo"
+  },
+  "experience": {
+    "title": "Experiencia profesional"
+  },
+  "education": {
+    "title": "Formación",
+    "formal": "Educación formal",
+    "certifications": "Certificaciones"
+  },
+  "contact": {
+    "title": "Contacto",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

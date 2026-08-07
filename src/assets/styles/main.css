@@ -1,5 +1,16 @@
-@import './base.css';
+@import './abstracts/spacing.css';
+@import './abstracts/themes.css';
+@import './abstracts/typography.css';
+@import './abstracts/variables.css';
+@import './abstracts/z-index.css';
 
+@import './base/accessibility.css';
+@import './base/base.css';
+@import './base/reset.css';
+@import './base/scrollbar.css';
+@import './base/selection.css';
+
+/*
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,8 +39,9 @@ a,
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; *//*
     padding: 0 2rem;
   }
 }
+*/

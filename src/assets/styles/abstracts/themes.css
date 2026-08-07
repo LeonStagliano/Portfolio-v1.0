@@ -1,0 +1,39 @@
+/* === Theme Variables === */
+
+/*! #00ff87 */
+
+/* Dark Theme (Default) */
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #121212;
+    --bg-tertiary: #1a1a1a;
+    --text-primary: #e8e8e8;
+    --text-secondary: #888888;
+    --text-muted: #555555;
+    --border-color: #333333;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: #f0f0f0;
+    --bg-secondary: #e0e0e0;
+    --bg-tertiary: #d0d0d0;
+    --text-primary: #0a0a0a;
+    --text-secondary: #444444;
+    --text-muted: #666666;
+    --border-color: #999999;
+    --neon-magenta: #d4216b;
+    --neon-cyan: #00b8c7;
+    --neon-red: #cc0033;
+}
+
+/* Smooth transition between themes */
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html,
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}

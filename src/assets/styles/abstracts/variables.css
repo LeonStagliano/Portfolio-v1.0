@@ -1,0 +1,116 @@
+/* === CSS Variables === */
+:root {
+    /* === CP2077 Core === */
+    --cyber-black: #0a0a0a;
+    --cyber-dark: #121212;
+    --cyber-panel: #1a1a1a;
+    --cyber-surface: #242424;
+    --cyber-border: #333333;
+
+    /* === CP2077 Accents === */
+    --neon-magenta: #fa00af;
+    --neon-red: #00fffb;
+    --neon-cyan: #00f0ff;
+    --neon-green: #00ff41;
+
+    /* === Colors === */
+    --color-primary: #ff2a6d;
+    --color-primary-light: #ff5c8a;
+    --color-primary-dark: #d4216b;
+    --color-secondary: #00f0ff;
+    --color-accent: #ff003f;
+    --color-success: #00ff41;
+    --color-warning: #ff2a6d;
+    --color-error: #ff003f;
+
+    /* === Glow Effects === */
+    --glow-magenta: 0 0 15px rgba(255, 42, 109, 0.5), 0 0 40px rgba(255, 42, 109, 0.15);
+    --glow-cyan: 0 0 15px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.15);
+    --glow-red: 0 0 15px rgba(255, 0, 63, 0.5), 0 0 40px rgba(255, 0, 63, 0.15);
+
+    /* === Typography === */
+    --font-display: 'Rajdhani', 'Orbitron', sans-serif;
+    --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    --font-primary: 'Share Tech', 'Inter', system-ui, sans-serif;
+    --font-hud: 'Share Tech Mono', monospace;
+
+    /* === Font sizes === */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 4rem;
+    --text-7xl: 5.5rem;
+
+    /* === Spacing === */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 8rem;
+
+    /* === Borders — CP2077: Sharp, angular === */
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 2px;
+    --radius-xl: 0px;
+    --radius-full: 0px;
+
+    /* === CP2077 Border Styles === */
+    --border-hud: 2px solid var(--neon-magenta);
+    --border-danger: 2px solid var(--neon-red);
+    --border-tech: 1px solid var(--neon-cyan);
+
+    /* === CP2077 Clip Paths === */
+    --clip-angular: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    --clip-tab: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+
+    /* === CP2077 Patterns === */
+    --pattern-hazard: repeating-linear-gradient(-45deg,
+            var(--neon-magenta),
+            var(--neon-magenta) 10px,
+            var(--cyber-black) 10px,
+            var(--cyber-black) 20px);
+
+    /* === Shadows === */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.7);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.8);
+
+    /* === Transitions === */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* === Z-index === */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal: 400;
+    --z-tooltip: 500;
+    --z-loading: 9999;
+
+    /* === Layout Tokens === */
+    --container-narrow: 50%;
+    --container-normal: 70%;
+    --container-wide: 85%;
+    --container-full: 100%;
+    --offset-left: -8vw;
+    --offset-right: 8vw;
+
+    /* === CP2077 Clip Paths — Aggressive === */
+    --clip-diagonal-left: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
+    --clip-diagonal-right: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 60px));
+    --clip-angular-aggressive: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px));
+    --clip-notch-top: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+    --clip-notch-bottom: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+    --clip-slash: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+}

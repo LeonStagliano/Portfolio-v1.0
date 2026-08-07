@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "skills": "Skills",
+    "projects": "Projects",
+    "methodology": "Methodology",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme",
+    "toggleLang": "Toggle language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to main content"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Creative Frontend Developer",
+    "scrollDown": "Scroll down"
+  },
+  "about": {
+    "title": "About Me",
+    "flipButton": "See personal side",
+    "personalSide": "Personal side",
+    "professionalSide": "Professional side",
+    "showPersonal": "Show personal side",
+    "showProfessional": "Show professional side"
+  },
+  "skills": {
+    "title": "Skills",
+    "techStack": "Tech Stack",
+    "softSkills": "Soft Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "viewDetails": "More details",
+    "viewGithub": "GitHub",
+    "viewDeploy": "Deploy",
+    "gallery": "Project Gallery",
+    "galleryPlaceholder": "Image and video gallery under construction",
+    "notFound": "Project not found",
+    "notFoundDescription": "The project you're looking for doesn't exist.",
+    "carousel": {
+      "prev": "Previous slide",
+      "next": "Next slide",
+      "dots": "Slide navigation",
+      "dot": "Go to slide"
+    }
+  },
+  "methodology": {
+    "title": "Work Methodology"
+  },
+  "experience": {
+    "title": "Work Experience"
+  },
+  "education": {
+    "title": "Education",
+    "formal": "Formal Education",
+    "certifications": "Certifications"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

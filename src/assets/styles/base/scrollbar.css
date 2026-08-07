@@ -1,0 +1,12 @@
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--neon-magenta); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #5be91e; border-radius: 2px; }
+
+
+@supports not selector(::-webkit-scrollbar) {
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: #E91E8C;
+    } 
+}
