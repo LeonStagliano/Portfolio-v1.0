@@ -9,12 +9,6 @@
                 <span class="navbar__logo-text"><img src="/src/assets/images/Logo.png" width="48px"></span>
             </router-link>
 
-            <button class="navbar__toggle" :aria-expanded="isMenuOpen"
-                :aria-label="isMenuOpen ? $t('nav.closeMenu') : $t('nav.openMenu')" @click="toggleMenu">
-                <span class="navbar__toggle-bar" aria-hidden="true"></span>
-                <span class="navbar__toggle-bar" aria-hidden="true"></span>
-                <span class="navbar__toggle-bar" aria-hidden="true"></span>
-            </button>
 
             <ul class="navbar__menu" :class="{ 'navbar__menu--open': isMenuOpen }" role="menubar">
                 <li v-for="item in navItems" :key="item.id" role="none">
@@ -34,7 +28,14 @@
                 <button class="navbar__lang-toggle" :aria-label="$t('nav.toggleLang')" @click="toggleLang">
                     <LanguageIcon :current-lang="currentLang" />
                 </button>
+                <button class="navbar__toggle" :class="{ 'open': isMenuOpen }" :aria-expanded="isMenuOpen"
+                    :aria-label="isMenuOpen ? $t('nav.closeMenu') : $t('nav.openMenu')" @click="toggleMenu">
+                    <span class="navbar__toggle-bar" aria-hidden="true"></span>
+                    <span class="navbar__toggle-bar" aria-hidden="true"></span>
+                    <span class="navbar__toggle-bar" aria-hidden="true"></span>
+                </button>
             </div>
+
         </div>
     </nav>
 </template>
@@ -148,14 +149,34 @@ onUnmounted(() => {
 .navbar__toggle {
     display: none;
     flex-direction: column;
-    gap: 4px;
+    justify-content: space-evenly;
+    /* gap: 4px; */
     padding: var(--space-sm);
+
+    background: none;
+    border: none;
+    box-shadow: 0 0 10px var(--neon-magenta);
+}
+
+/* Animación a X */
+.navbar__toggle.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.navbar__toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.navbar__toggle.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 .navbar__toggle-bar {
     width: 24px;
     height: 2px;
-    background-color: var(--neon-magenta);
+    border-radius: 1rem;
+    background-color: #858585;  /* CORREGIR */
     transition: transform var(--transition-fast);
 }
 
@@ -212,8 +233,13 @@ onUnmounted(() => {
     height: 40px;
     border-radius: var(--radius-sm);
     color: var(--text-secondary);
+
     transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
     border: 1px solid var(--cyber-border);
+
+    background: none;
+    border: none;
+    box-shadow: 0 0 10px var(--neon-magenta);
 }
 
 .navbar__theme-toggle:hover,
@@ -251,6 +277,10 @@ onUnmounted(() => {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        padding-top: 14vh;
     }
 }
 </style>

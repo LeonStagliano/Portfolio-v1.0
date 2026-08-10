@@ -1,8 +1,6 @@
 <template>
   <section id="hero" class="hero">
-    <div class="hero__background">
-      <div class="hero__grid"></div>
-    </div>
+    <div class="hero__background"></div>
     <div class="hero__scanline"></div>
 
     <div class="hero__container">
@@ -13,19 +11,13 @@
             <span id="firstname">LEÓN</span>
             <span id="middlename" class="glitch-hero" data-text=ARDO>ARDO</span>
           </div>
-          <span id="lastname">STAGLIANO</span>
+          <span id="lastname">STAG<span style="margin-right: 3px;">L</span>IANO</span>
         </h1>
         <p class="hero__role">
           <span class="hero__typed">{{ displayedText }}</span>
-          <span class="hero__cursor" :class="{ 'hero__cursor--blink': !isTyping }">_</span>
+          <span class="hero__cursor" :class="{ 'hero__cursor--blink': !isTyping }">|</span>
         </p>
       </div>
-      <!-- <div class="hero__image"> -->
-      <!-- <div class="hero__avatar"> -->
-      <!-- <img src="/src/assets/images/FotoCV.jpg"></img> -->
-      <!-- <span class="hero__avatar-text">LS</span> -->
-      <!-- </div> -->
-      <!-- </div> -->
     </div>
 
     <div class="hero__scroll-indicator">
@@ -44,8 +36,6 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
-
 .hero {
   position: relative;
   display: flex;
@@ -70,34 +60,29 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   opacity: 0.12;
 }
 
-.hero__grid {
-  background-image:
-    linear-gradient(rgba(233, 30, 140, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(233, 30, 140, 0.035) 1px, transparent 1px);
-  background-size: 44px 44px;
-}
-
 #fullname {
-  font-family: var(--title-font);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-family: var(--font-title);
   font-weight: 900;
-  font-size: clamp(3.2rem, 11vw, 8.5rem);
+  font-size: clamp(1rem, 11vw, 8.5rem);
   line-height: 0.88;
   letter-spacing: -0.025em;
-  margin: 0 0 1.5rem;
+  margin: 0 0 .8rem;
   color: #F0E8FF;
 }
 
-.names {
+/* .names {
   display: flex;
-}
+} */
 
-#fisrtname {
+#firstname {
   color: #F0E8FF;
-  display: inline-block
+  display: inline-block;
 }
 
 #middlename {
-  /* color: #E91E8C; */
   color: var(--neon-magenta);
   text-shadow: 0 0 40px rgba(233, 30, 140, 0.6), 0 0 80px rgba(233, 30, 140, 0.25);
   display: inline-block;
@@ -329,25 +314,6 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   }
 }
 
-.hero__image {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero__avatar {
-  width: 420px;
-  height: 420px;
-  background-image: url('/src/assets/images/FotoCV.jpg');
-  background-size: cover;
-  border: 2px solid var(--neon-magenta);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--glow-magenta);
-  animation: avatarPulse 3s ease-in-out infinite;
-  clip-path: var(--clip-angular-aggressive);
-}
-
 @keyframes avatarPulse {
 
   0%,
@@ -360,22 +326,16 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   }
 }
 
-.hero__avatar-text {
-  font-family: var(--font-display);
-  font-size: 4rem;
-  font-weight: 700;
-  color: var(--neon-magenta);
-  text-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
-}
-
 .hero__scroll-indicator {
   position: absolute;
   bottom: var(--space-lg);
-  right: var(--space-lg);
+  right: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  text-align: center;
+  white-space: nowrap;
+  /* gap: var(--space-sm); */
   color: var(--text-muted);
   font-family: var(--font-hud);
   font-size: var(--text-sm);
@@ -398,11 +358,11 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
 
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate(50%, 0)
   }
 
   50% {
-    transform: translateY(10px);
+    transform: translate(50%, 10px)
   }
 }
 
@@ -426,55 +386,5 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
     width: 180px;
     height: 180px;
   }
-
-  .hero__scroll-indicator {
-    right: 50%;
-    transform: translateX(50%);
-  }
-}
-</style>
-
-<style>
-.glitch-hero {
-  position: relative;
-  display: inline-block;
-}
-
-.glitch-hero::before,
-.glitch-hero::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  pointer-events: none;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  text-transform: uppercase;
-}
-
-.glitch-hero::before {
-  z-index: 2;
-}
-
-.glitch-hero::after {
-  z-index: 1;
-}
-
-.hero__name:hover .glitch-hero::before {
-  animation: glitch-before 0.4s steps(3) infinite;
-  color: var(--neon-magenta);
-  opacity: 1;
-}
-
-.hero__name:hover .glitch-hero::after {
-  animation: glitch-after 0.4s steps(3) 0.05s infinite;
-  color: var(--neon-cyan);
-  opacity: 1;
 }
 </style>
