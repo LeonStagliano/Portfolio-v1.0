@@ -3,6 +3,33 @@ body {
   min-height: 100vh;
 }
 
+/* Scanlines overlay — CP2077 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  z-index: 9999;
+}
+
+/* Smooth transition between themes */
+html {
+    transition: background-color 3s ease, color 3s ease;
+}
+
+html,
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
 
 /* color palette from <https://github.com/vuejs/theme> */
 /* :root {

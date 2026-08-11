@@ -46,6 +46,6 @@ import HeroSection from '@/components/sections/HeroSection.vue'
   #home {
   width: 100%;
   min-height: 100vh;
-  background: #04000E;
+  background: var(--bg-primary);
 }
 </style>

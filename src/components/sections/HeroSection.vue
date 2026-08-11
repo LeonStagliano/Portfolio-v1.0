@@ -70,7 +70,7 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   line-height: 0.88;
   letter-spacing: -0.025em;
   margin: 0 0 .8rem;
-  color: #F0E8FF;
+  color: var(--text-primary);
 }
 
 /* .names {
@@ -78,107 +78,23 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
 } */
 
 #firstname {
-  color: #F0E8FF;
+  /* color: #F0E8FF; */
   display: inline-block;
 }
 
 #middlename {
-  color: var(--neon-magenta);
+  color: var(--main-color);
   text-shadow: 0 0 40px rgba(233, 30, 140, 0.6), 0 0 80px rgba(233, 30, 140, 0.25);
   display: inline-block;
-  cursor: default
+  cursor: default;
+
+    /* color: transparent;
+  -webkit-text-stroke: 3px var(--main-color); */
 }
 
 #lastname {
-  color: #F0E8FF;
-  display: inline-block
-}
-
-/* ANIMATIONS */
-@keyframes glitch-before {
-
-  /* --- 0% al 20%: EL GLITCH OCURRE (1 segundo) --- */
-  0% {
-    clip-path: inset(0 0 95% 0);
-    transform: translate(-5px, 0);
-    opacity: 1;
-  }
-
-  2% {
-    clip-path: inset(25% 0 55% 0);
-    transform: translate(5px, 0);
-  }
-
-  4% {
-    clip-path: inset(55% 0 25% 0);
-    transform: translate(-5px, 0);
-  }
-
-  6% {
-    clip-path: inset(75% 0 8% 0);
-    transform: translate(5px, 0);
-  }
-
-  8% {
-    clip-path: inset(8% 0 80% 0);
-    transform: translate(-5px, 0);
-  }
-
-  10% {
-    clip-path: inset(40% 0 40% 0);
-    transform: translate(5px, 0);
-    opacity: 1;
-  }
-
-  /* --- 20% al 100%: TIEMPO DE PAUSA (4 segundos) --- */
-  12.001%,
-  100% {
-    clip-path: inset(0 0 100% 0);
-    opacity: 0;
-  }
-}
-
-@keyframes glitch-after {
-
-  /* --- 0% al 20%: EL GLITCH OCURRE (1 segundo) --- */
-  0% {
-    clip-path: inset(85% 0 0 0);
-    transform: translate(5px, 0);
-    opacity: 1;
-  }
-
-  2% {
-    clip-path: inset(10% 0 65% 0);
-    transform: translate(-5px, 0);
-  }
-
-  4% {
-    clip-path: inset(45% 0 35% 0);
-    transform: translate(5px, 0);
-  }
-
-  6% {
-    clip-path: inset(65% 0 15% 0);
-    transform: translate(-5px, 0);
-  }
-
-  8% {
-    clip-path: inset(2% 0 88% 0);
-    transform: translate(5px, 0);
-  }
-
-  10% {
-    clip-path: inset(30% 0 50% 0);
-    transform: translate(-5px, 0);
-    opacity: 1;
-  }
-
-  /* --- 20% al 100%: TIEMPO DE PAUSA (4 segundos) --- */
-  12.001%,
-  100% {
-    clip-path: inset(0 0 100% 0);
-    opacity: 0;
-  }
+  /* color: #F0E8FF; */
+  display: inline-block;
 }
 
 /* GLITCH TEXT */
@@ -229,7 +145,7 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent);
+  background: linear-gradient(90deg, transparent, var(--main-color), transparent);
   animation: scanline 8s linear infinite;
   opacity: 0.6;
 }
@@ -248,25 +164,29 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  /* grid-template-columns: 2fr 3fr; */
   align-items: center;
-  width: 100%;
+  width: 70vw;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
-  gap: var(--space-xl);
+  /* padding: 0 var(--space-lg); */
+  /* gap: var(--space-xl); */
 }
 
 .hero__content {
-  margin-left: var(--offset-left);
+  /* margin-left: var(--offset-left); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero__greeting {
   font-family: var(--font-hud);
   font-size: 1rem;
-  color: var(--neon-magenta);
+  color: var(--main-color);
   margin-bottom: var(--space-sm);
   text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+  align-self: flex-start;
 }
 
 .hero__name {
@@ -288,42 +208,18 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
 }
 
 .hero__typed {
-  color: var(--neon-magenta);
+  color: var(--main-color);
   text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
 }
 
 .hero__cursor {
-  color: var(--neon-red);
+  color: var(--secondary-color);
   font-weight: 300;
   animation: none;
 }
 
 .hero__cursor--blink {
-  animation: cursorBlink 1s step-end infinite;
-}
-
-@keyframes cursorBlink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes avatarPulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 10px rgba(255, 42, 109, 0.5), 0 0 30px rgba(255, 42, 109, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 20px rgba(255, 42, 109, 0.8), 0 0 60px rgba(255, 42, 109, 0.3);
-  }
+  animation: blink 1s step-end infinite;
 }
 
 .hero__scroll-indicator {
@@ -348,22 +244,10 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
 .hero__scroll-arrow {
   width: 24px;
   height: 24px;
-  border-right: 2px solid var(--neon-magenta);
-  border-bottom: 2px solid var(--neon-magenta);
+  border-right: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
   transform: rotate(45deg);
-  box-shadow: 2px 2px 5px rgba(255, 42, 109, 0.3);
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translate(50%, 0)
-  }
-
-  50% {
-    transform: translate(50%, 10px)
-  }
+  filter: drop-shadow(3px 3px 2px var(--main-color));
 }
 
 @media (max-width: 768px) {
@@ -375,16 +259,6 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   .hero__content {
     margin-left: 0;
     order: 2;
-  }
-
-  .hero__image {
-    justify-content: center;
-    order: 1;
-  }
-
-  .hero__avatar {
-    width: 180px;
-    height: 180px;
   }
 }
 </style>

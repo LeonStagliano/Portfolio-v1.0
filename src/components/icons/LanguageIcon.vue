@@ -26,3 +26,9 @@ defineProps({
     }
 })
 </script>
+
+<style scoped>
+svg {
+    padding: 4px;
+}
+</style>

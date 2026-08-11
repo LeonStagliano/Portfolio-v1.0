@@ -4,11 +4,14 @@
 @import './abstracts/variables.css';
 @import './abstracts/z-index.css';
 
+@import './animations/keyframes.css';
+
 @import './base/accessibility.css';
 @import './base/base.css';
 @import './base/reset.css';
 @import './base/scrollbar.css';
 @import './base/selection.css';
+
 
 /*
 #app {

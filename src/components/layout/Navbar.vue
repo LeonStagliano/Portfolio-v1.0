@@ -6,11 +6,10 @@
     <nav class="navbar" :class="{ 'navbar--scrolled': isScrolled }" aria-label="Navegación principal">
         <div class="navbar__container">
             <router-link to="/" class="navbar__logo" aria-label="León Stagliano - Inicio">
-                <span class="navbar__logo-text"><img src="/src/assets/images/Logo.png" width="48px"></span>
+                <img class="navbar__logo" src="/src/assets/images/Logo.png">
             </router-link>
 
-
-            <ul class="navbar__menu" :class="{ 'navbar__menu--open': isMenuOpen }" role="menubar">
+            <ul class="navbar__menu" :class="{ 'navbar__menu--open': isMenuOpen && !isDesktop }" role="menubar">
                 <li v-for="item in navItems" :key="item.id" role="none">
                     <a :href="`#${item.id}`" class="navbar__link"
                         :class="{ 'navbar__link--active': activeSection === item.id }" role="menuitem"
@@ -21,13 +20,8 @@
             </ul>
 
             <div class="navbar__actions">
-                <button class="navbar__theme-toggle" :aria-label="$t('nav.toggleTheme')" @click="toggleTheme">
-                    <LightModeIcon :is-dark="isDark" />
-                </button>
-
-                <button class="navbar__lang-toggle" :aria-label="$t('nav.toggleLang')" @click="toggleLang">
-                    <LanguageIcon :current-lang="currentLang" />
-                </button>
+                <ToggleThemeSwitch />
+                <LanguageSwitch />
                 <button class="navbar__toggle" :class="{ 'open': isMenuOpen }" :aria-expanded="isMenuOpen"
                     :aria-label="isMenuOpen ? $t('nav.closeMenu') : $t('nav.openMenu')" @click="toggleMenu">
                     <span class="navbar__toggle-bar" aria-hidden="true"></span>
@@ -41,20 +35,23 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useTheme } from '@/composables/useTheme'
-import LightModeIcon from '@/components/icons/LightModeIcon.vue'
-// import DarkModeIcon from '@/components/icons/DarkModeIcon.vue'
-import LanguageIcon from '@/components/icons/LanguageIcon.vue'
-
-const { locale } = useI18n()
-const { isDark, toggleTheme } = useTheme()
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import ToggleThemeSwitch from '@/components/ui/ToggleThemeSwitch.vue'
+import LanguageSwitch from '@/components/ui/LanguageSwitch.vue'
+import { useWindowSize } from '@/composables/useWindowSize.js'
 
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
 const activeSection = ref('')
-const currentLang = ref(locale.value)
+
+const { width } = useWindowSize()
+const isDesktop = computed(() => width.value > 768 )
+
+watch(isDesktop, (newValue) => {
+    if (newValue === true) {
+        isMenuOpen.value = false
+    }
+})
 
 const navItems = [
     { id: 'about' },
@@ -76,11 +73,6 @@ const toggleMenu = () => {
 
 const closeMenu = () => {
     isMenuOpen.value = false
-}
-
-const toggleLang = () => {
-    locale.value = locale.value === 'es' ? 'en' : 'es'
-    currentLang.value = locale.value
 }
 
 onMounted(() => {
@@ -116,15 +108,13 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     z-index: 200;
-    padding: var(--space-md) 0;
-    transition: background-color transparent, backdrop-filter var(--transition-normal);
-    border-bottom: 1px solid transparent;
+    padding: var(--space-sm) 0;
 }
 
 .navbar--scrolled {
-    background-color: rgba(10, 10, 15, 0.95);
+    background-color: var(--bg-secondary);
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--neon-magenta);
+    border-bottom: 1px solid var(--main-color);
 }
 
 .navbar__container {
@@ -137,37 +127,32 @@ onUnmounted(() => {
 }
 
 .navbar__logo {
+    max-width: 38px;
+    filter: var(--logo-filter);
     transition: filter 0.5s ease;
 }
 
 .navbar__logo:hover {
-    /* filter: drop-shadow(2px 4px 4px rgba(255, 42, 109, 0.8)); */
-    filter: invert(30%) sepia(97%) saturate(6819%) hue-rotate(308deg) brightness(99%) contrast(113%);
+    filter: saturate(100%) brightness(0%) var(--logo-hue-rotation);
     opacity: 1;
 }
 
 .navbar__toggle {
     display: none;
     flex-direction: column;
-    justify-content: space-evenly;
-    /* gap: 4px; */
+    gap: 4px;
     padding: var(--space-sm);
-
     background: none;
     border: none;
-    box-shadow: 0 0 10px var(--neon-magenta);
 }
 
-/* Animación a X */
 .navbar__toggle.open span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
 }
-
 .navbar__toggle.open span:nth-child(2) {
     opacity: 0;
     transform: translateX(-20px);
 }
-
 .navbar__toggle.open span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
 }
@@ -176,14 +161,41 @@ onUnmounted(() => {
     width: 24px;
     height: 2px;
     border-radius: 1rem;
-    background-color: #858585;  /* CORREGIR */
+    background-color: var(--main-color);
     transition: transform var(--transition-fast);
 }
 
 .navbar__menu {
+    position: fixed;
     display: flex;
-    gap: var(--space-lg);
+    flex-direction: column;
+    align-items: center;
+    top: 70px;
+    left: 0;
+    right: 0;
+    gap: var(--space-sm);
+    /* padding: var(--space-lg); */
     list-style: none;
+    background-color: var(--bg-secondary);
+    backdrop-filter: blur(10px);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+    border-bottom: 1px solid var(--neon-magenta);
+}
+
+.navbar__menu--open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+    z-index: -1;
+    padding: 12vh 0vh 4vh;
+}
+
+.navbar__toggle {
+    display: flex;
 }
 
 .navbar__link {
@@ -195,6 +207,20 @@ onUnmounted(() => {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transition: color var(--transition-fast);
+
+    background-image:
+        linear-gradient(var(--main-color), var(--main-color)),
+        linear-gradient(var(--text-secondary), var(--text-secondary));
+
+    background-repeat: no-repeat;
+    background-size: 0% 100%, 100% 100%;
+    background-position: left;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    transition: background-size 0.2s ease;
 }
 
 .navbar__link::after {
@@ -203,15 +229,16 @@ onUnmounted(() => {
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 2px;
-    background-color: var(--neon-magenta);
-    box-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+    height: 1px;
+    background-color: var(--main-color);
+    box-shadow: 0 0 5px var(--main-color);
     transition: width var(--transition-fast);
 }
 
 .navbar__link:hover,
 .navbar__link--active {
-    color: var(--neon-magenta);
+    color: var(--main-color);
+    background-size: 100% 100%, 100% 100%;
 }
 
 .navbar__link:hover::after,
@@ -221,66 +248,29 @@ onUnmounted(() => {
 
 .navbar__actions {
     display: flex;
-    gap: var(--space-sm);
-}
-
-.navbar__theme-toggle,
-.navbar__lang-toggle {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-sm);
-    color: var(--text-secondary);
-
-    transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
-    border: 1px solid var(--cyber-border);
-
-    background: none;
-    border: none;
-    box-shadow: 0 0 10px var(--neon-magenta);
+    /* gap: var(--space-sm); */
 }
 
-.navbar__theme-toggle:hover,
-.navbar__lang-toggle:hover {
-    background-color: var(--neon-magenta);
-    color: var(--cyber-black);
-    border-color: var(--neon-magenta);
-    box-shadow: var(--glow-magenta);
-}
-
-@media (max-width: 768px) {
-    .navbar__toggle {
-        display: flex;
-    }
-
-    .navbar__menu {
+@media (min-width: 769px) {
+    .navbar {
         position: fixed;
-        top: 70px;
+        top: 0;
         left: 0;
         right: 0;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-md);
-        padding: var(--space-lg);
-        background-color: rgba(10, 10, 15, 0.98);
-        backdrop-filter: blur(10px);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: transform var(--transition-normal), opacity var(--transition-normal);
-        border-bottom: 2px solid var(--neon-magenta);
+        z-index: 200;
+        padding: var(--space-md) 0;
     }
-
-    .navbar__menu--open {
-        transform: translateY(0);
+    .navbar__menu {
+        flex-direction: row;
+        gap: var(--space-lg);
         opacity: 1;
         visibility: visible;
-        position: absolute;
-        top: 0;
-        z-index: -1;
-        padding-top: 14vh;
+    }
+    .navbar__toggle{
+        display: none;
     }
 }
 </style>
+
+<!--! REVISAR NAVBAR / NAVBAR-MENU / NAVBAR-MENU-OPEN -->
