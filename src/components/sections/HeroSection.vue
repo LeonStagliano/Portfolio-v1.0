@@ -54,7 +54,7 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background-image: url(https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNmE3MzA5OGFjMGNjODE5MTgwMjAzZmEyMjRlM2ZkYTc6ZmlsZV8wMDAwMDAwMDVlZDA4MWY0YjlhZWQ0MDFkZTkzZDA5NSIsImdpem1vX2lkIjpudWxsLCJ3aWQiOm51bGwsIm9pZCI6bnVsbCwic2lkIjpudWxsLCJjcyI6bnVsbCwiZm4iOm51bGwsImNkIjpudWxsLCJ0cyI6IjIwNjcwIiwicCI6InB5aSIsImNpZCI6IjEiLCJzaWciOiI5NDgxMGU0MDNkYzc0NTcwNzRkZTA4MmQ5NzAzMzI4YzY5MzNlYzQ1M2IyNGQ2MzUzMDJiYTJjYTZjOTExZWM4IiwidiI6IjAiLCJjZG4iOm51bGwsImNwIjpudWxsLCJtYSI6bnVsbH0=);
+  background-image: url('@/assets/images/hero-image.png');
   background-size: cover;
   background-position: center;
   opacity: 0.12;
@@ -129,16 +129,6 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   opacity: 1;
 }
 
-@keyframes gridScroll {
-  0% {
-    background-position: 0 0, 0 0, 0 0;
-  }
-
-  100% {
-    background-position: 0 50px, 50px 0, 0 50px;
-  }
-}
-
 .hero__scanline {
   position: absolute;
   top: 0;
@@ -161,15 +151,16 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
 }
 
 .hero__container {
-  position: relative;
+  /* position: relative; */
   z-index: 1;
-  display: grid;
-  /* grid-template-columns: 2fr 3fr; */
-  align-items: center;
-  width: 70vw;
-  max-width: 1400px;
-  margin: 0 auto;
-  /* padding: 0 var(--space-lg); */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* width: 80vw; */
+  max-width: fit-content;
+  align-self: center;
+  /* max-width: 1400px; */
+  /* margin: 0 auto; */
+  padding: 0 var(--space-lg);
   /* gap: var(--space-xl); */
 }
 
@@ -178,15 +169,16 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: fit-content;
 }
 
 .hero__greeting {
+  align-self: self-start;
   font-family: var(--font-hud);
   font-size: 1rem;
   color: var(--main-color);
   margin-bottom: var(--space-sm);
   text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
-  align-self: flex-start;
 }
 
 .hero__name {
@@ -205,6 +197,8 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   font-family: var(--font-hud);
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--text-secondary);
+  text-align: center;
+  max-width: 70vw;
 }
 
 .hero__typed {
@@ -250,7 +244,7 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   filter: drop-shadow(3px 3px 2px var(--main-color));
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .hero__container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -259,6 +253,20 @@ const { displayedText, isTyping } = useTypingAnimation(t('hero.role'), 80)
   .hero__content {
     margin-left: 0;
     order: 2;
+  }
+} */
+
+@media (min-width: 1024px) {
+  .hero__greeting,
+  .hero__role {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero__greeting,
+  .hero__role {
+    font-size: 1.6rem;
   }
 }
 </style>
