@@ -3,7 +3,10 @@
         {{ $t('nav.skipToContent') }}
     </a>
 
-    <nav class="navbar" :class="{ 'navbar--scrolled': isScrolled }" aria-label="Navegación principal">
+    <nav class="navbar" :class="{ 
+        'navbar--scrolled': isScrolled,
+        'navbar--menu-open': isMenuOpen && !isDesktop 
+        }" aria-label="Navegación principal">
         <div class="navbar__container">
             <router-link to="/" class="navbar__logo" aria-label="León Stagliano - Inicio">
                 <img class="navbar__logo" src="/src/assets/images/Logo.png">
@@ -45,7 +48,7 @@ const isMenuOpen = ref(false)
 const activeSection = ref('')
 
 const { width } = useWindowSize()
-const isDesktop = computed(() => width.value > 768 )
+const isDesktop = computed(() => width.value > 768)
 
 watch(isDesktop, (newValue) => {
     if (newValue === true) {
@@ -89,8 +92,8 @@ onUnmounted(() => {
     position: absolute;
     top: -40px;
     left: 0;
-    background-color: var(--neon-magenta);
     color: var(--cyber-black);
+    background-color: var(--neon-magenta);
     padding: var(--space-sm) var(--space-md);
     z-index: 1000;
     transition: top var(--transition-fast);
@@ -111,22 +114,25 @@ onUnmounted(() => {
     padding: var(--space-sm) 0;
 }
 
-.navbar--scrolled {
+.navbar--scrolled,
+.navbar--menu-open {
     background-color: var(--bg-secondary);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--main-color);
 }
 
 .navbar__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr auto;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--space-lg);
+    padding: 0 var(--space-md);
 }
 
 .navbar__logo {
+    align-self: center;
+    justify-self: center;
     max-width: 38px;
     filter: var(--logo-filter);
     transition: filter 0.5s ease;
@@ -134,7 +140,6 @@ onUnmounted(() => {
 
 .navbar__logo:hover {
     filter: saturate(100%) brightness(0%) var(--logo-hue-rotation);
-    opacity: 1;
 }
 
 .navbar__toggle {
@@ -166,32 +171,43 @@ onUnmounted(() => {
 }
 
 .navbar__menu {
-    position: fixed;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    top: 70px;
-    left: 0;
-    right: 0;
     gap: var(--space-sm);
-    /* padding: var(--space-lg); */
-    list-style: none;
-    background-color: var(--bg-secondary);
-    backdrop-filter: blur(10px);
-    transform: translateY(-100%);
+    grid-row: 2;
+    grid-column: span 10;
+    padding: 0;
     opacity: 0;
+    max-height: 0;
     visibility: hidden;
-    transition: transform var(--transition-fast), opacity var(--transition-fast);
-    border-bottom: 1px solid var(--neon-magenta);
+    overflow: hidden;
+    pointer-events: none;
+    list-style: none;
+    transform: translateY(-100%);
+    transition: 
+        max-height var(--transition-normal),
+        transform var(--transition-normal),
+        opacity var(--transition-normal),
+        padding var(--transition-normal),
+        visibility 0s linear 300ms;
 }
 
 .navbar__menu--open {
-    transform: translateY(0);
+    display: flex;
+    grid-row: 2;
+    padding: var(--space-md) 0;
     opacity: 1;
     visibility: visible;
-    top: 0;
-    z-index: -1;
-    padding: 12vh 0vh 4vh;
+    transform: translateY(0);
+    max-height: 70vh;
+    pointer-events: auto;
+    transition:
+        max-height var(--transition-normal),
+        transform var(--transition-normal),
+        opacity var(--transition-normal),
+        padding var(--transition-normal);
 }
 
 .navbar__toggle {
@@ -206,21 +222,6 @@ onUnmounted(() => {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    transition: color var(--transition-fast);
-
-    background-image:
-        linear-gradient(var(--main-color), var(--main-color)),
-        linear-gradient(var(--text-secondary), var(--text-secondary));
-
-    background-repeat: no-repeat;
-    background-size: 0% 100%, 100% 100%;
-    background-position: left;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    transition: background-size 0.2s ease;
 }
 
 .navbar__link::after {
@@ -231,7 +232,7 @@ onUnmounted(() => {
     width: 0;
     height: 1px;
     background-color: var(--main-color);
-    box-shadow: 0 0 5px var(--main-color);
+    box-shadow: 0 0 4px var(--main-color);
     transition: width var(--transition-fast);
 }
 
@@ -249,28 +250,38 @@ onUnmounted(() => {
 .navbar__actions {
     display: flex;
     align-items: center;
-    /* gap: var(--space-sm); */
+    grid-column: 10;
 }
 
 @media (min-width: 769px) {
     .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 200;
         padding: var(--space-md) 0;
     }
+
     .navbar__menu {
         flex-direction: row;
-        gap: var(--space-lg);
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        white-space: nowrap;
         opacity: 1;
         visibility: visible;
+        transform: none;
+        max-height: none;
+        overflow: visible;
+        pointer-events: auto;
+        display: flex;
+        grid-row: 1;
+        grid-column: 2 / span 8;
     }
-    .navbar__toggle{
+
+    .navbar__toggle {
         display: none;
     }
 }
-</style>
 
-<!--! REVISAR NAVBAR / NAVBAR-MENU / NAVBAR-MENU-OPEN -->
+@media (min-width: 1440px) {
+    .navbar__link {
+        font-size: 1rem;
+    }
+}
+</style>
