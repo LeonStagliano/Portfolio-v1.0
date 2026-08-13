@@ -58,9 +58,9 @@ watch(isDesktop, (newValue) => {
 
 const navItems = [
     { id: 'about' },
+    { id: 'methodology' },
     { id: 'skills' },
     { id: 'projects' },
-    { id: 'methodology' },
     { id: 'experience' },
     { id: 'education' },
     { id: 'contact' }
@@ -118,7 +118,7 @@ onUnmounted(() => {
 .navbar--menu-open {
     background-color: var(--bg-secondary);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--main-color);
+    box-shadow: 0 0.1px 8px var(--main-color);
 }
 
 .navbar__container {
@@ -222,6 +222,7 @@ onUnmounted(() => {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    transition: font-size var(--transition-normal);
 }
 
 .navbar__link::after {
@@ -281,6 +282,7 @@ onUnmounted(() => {
 
 @media (min-width: 1440px) {
     .navbar__link {
+        transition: font-size var(--transition-normal);
         font-size: 1rem;
     }
 }
