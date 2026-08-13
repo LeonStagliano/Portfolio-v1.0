@@ -15,7 +15,7 @@ const onLoadComplete = () => {
 <template>
   <div id="portfolio">
     <LoadingScreen v-if="!isLoaded" @complete="onLoadComplete" />
-    <RouterView v-if="'isReady'"/>
+    <RouterView v-if="isReady"/>
   </div>
 </template>
 
