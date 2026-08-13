@@ -7,15 +7,16 @@ import { ref, onMounted, onUnmounted } from 'vue'
  * @returns {{ displayedText: Ref<string>, isTyping: Ref<boolean>, reset: () => void }}
  */
 export function useTypingAnimation(text, speed = 100) {
+  const resolveText = () => (typeof text === 'function' ? text() : text)
   const displayedText = ref('')
   const isTyping = ref(false)
   let timeoutId = null
 
-  const type = (index) => {
-    if (index <= text.length) {
-      displayedText.value = text.slice(0, index)
+  const type = (index, source) => {
+    if (index <= source.length) {
+      displayedText.value = source.slice(0, index)
       isTyping.value = true
-      timeoutId = setTimeout(() => type(index + 1), speed)
+      timeoutId = setTimeout(() => type(index + 1, source), speed)
     } else {
       isTyping.value = false
     }
@@ -28,8 +29,10 @@ export function useTypingAnimation(text, speed = 100) {
   }
 
   const start = () => {
-    reset()
-    type(0)
+    if (timeoutId) clearTimeout(timeoutId)
+    displayedText.value = ''
+    isTyping.value = false
+    type(0, resolveText())
   }
 
   onMounted(() => {
