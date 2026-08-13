@@ -2,9 +2,9 @@
   "nav": {
     "home": "Home",
     "about": "About Me",
+    "methodology": "Methodology",
     "skills": "Skills",
     "projects": "Projects",
-    "methodology": "Methodology",
     "experience": "Experience",
     "education": "Education",
     "contact": "Contact",
@@ -22,6 +22,8 @@
   "about": {
     "title": "About Me",
     "flipButton": "See personal side",
+    "professionalDescription": "My professional career has always been driven by understanding problems, coordinating people, and building effective solutions. Today, I apply that experience to web application development, combining creativity, leadership, communication, and analytical thinking with continuous learning in Frontend technologies. I am motivated by building clear, accessible, and functional digital solutions that deliver real value to users, while working with responsibility, sound judgment, and a continuous improvement mindset.",
+    "personalDescription": "",
     "personalSide": "Personal side",
     "professionalSide": "Professional side",
     "showPersonal": "Show personal side",

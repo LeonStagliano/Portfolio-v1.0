@@ -2,9 +2,9 @@
   "nav": {
     "home": "Inicio",
     "about": "Sobre mí",
+    "methodology": "Metodología",
     "skills": "Habilidades",
     "projects": "Proyectos",
-    "methodology": "Metodología",
     "experience": "Experiencia",
     "education": "Formación",
     "contact": "Contacto",
@@ -22,6 +22,8 @@
   "about": {
     "title": "Sobre mí",
     "flipButton": "Ver lado personal",
+    "professionalDescription": "Mi carrera profesional siempre ha estado ligada a comprender problemas, coordinar personas y construir soluciones. Hoy aplico esa experiencia al desarrollo de aplicaciones web, combinando creatividad, liderazgo, comunicación y capacidad de análisis con una formación continua en tecnologías Frontend. Me motiva desarrollar soluciones digitales claras, accesibles y funcionales que aporten valor real a las personas, trabajando con responsabilidad, criterio y una actitud de mejora continua.",
+    "personalDescription": "",
     "personalSide": "Lado personal",
     "professionalSide": "Lado profesional",
     "showPersonal": "Mostrar lado personal",
