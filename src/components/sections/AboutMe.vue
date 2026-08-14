@@ -23,11 +23,14 @@
                 <!-- <div class="about__avatar">
                   <span>LS</span>
                 </div> -->
-                <h3 class="about__name">León Stagliano</h3>
-                <p class="about__role">{{ $t('hero.role') }}</p>
-                <p class="about__description">{{ $t('about.professionalDescription') }}</p>
+                <div class="professional-description__container">
+                  <h3 class="about__name">León Stagliano</h3>
+                  <p class="about__role">{{ $t('hero.role') }}</p>
+                  <p class="about__description">{{ $t('about.professionalDescription') }}</p>
+                </div>
                 <div class="methodology-container">
                   <Methodology />
+                  <!-- <Carrusel3D /> -->
                 </div>
               </div>
             </div>
@@ -112,6 +115,7 @@
 import { ref, computed } from 'vue'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 import Methodology from '@/components/sections/Methodology.vue'
+import Carrusel3D from '@/components/layout/Carrusel3D.vue'
 
 const { elementRef, isVisible } = useScrollAnimation()
 const rotationCount = ref(0)
@@ -148,7 +152,8 @@ const flipCard = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: 50vw;
+  margin: var(--space-lg);
 }
 
 .about__header {
@@ -208,6 +213,10 @@ const flipCard = () => {
 }
 
 .about__card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   grid-column: 2;
   grid-row: 2;
   perspective: 1000px;
@@ -221,6 +230,7 @@ const flipCard = () => {
   min-height: 500px;
   transform-style: preserve-3d;
   transition: transform 1s ease;
+  box-shadow: 0 0 20px var(--main-color);
 }
 
 .about__card-front {
@@ -237,10 +247,11 @@ const flipCard = () => {
   min-height: 500px;
   backface-visibility: hidden;
   background-color: var(--bg-secondary);
-  border: 1px solid var(--neon-magenta);
+  border: 1px solid var(--main-color);
   overflow: hidden;
   transition: box-shadow var(--transition-fast);
-  clip-path: var(--clip-notch-top);
+  /* clip-path: var(--clip-notch-top); */
+  border-top: 10px solid var(--main-color);
 }
 
 .about__card-front::before,
@@ -266,7 +277,7 @@ const flipCard = () => {
 .about__card-content {
   padding: var(--space-md);
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   text-align: center;
 }
@@ -414,6 +425,16 @@ const flipCard = () => {
   animation: fadeInUp 0.6s ease forwards;
 }
 
+.professional-description__container {
+  max-width: 40%;
+  padding: var(--space-lg);
+}
+
+.methodology-container {
+  width: 100%;
+  padding: var(--space-lg);
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -426,7 +447,7 @@ const flipCard = () => {
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .about__layout {
     grid-template-columns: 1fr;
   }
@@ -439,6 +460,12 @@ const flipCard = () => {
     grid-column: 1;
     grid-row: 2;
     max-width: 100%;
+  }
+} */
+
+@media (min-width: 768px) {
+  .about__card{
+    max-width: 50vw !important;
   }
 }
 </style>

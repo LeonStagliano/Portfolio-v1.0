@@ -1,31 +1,30 @@
 <template>
-  <section id="methodology" ref="elementRef" class="methodology section section--wide" :class="{ 'methodology--visible': isVisible }">
-    <div class="container">
-      <p class="methodology__hud-label">// METODOLOGÍA</p>
-      <h2 class="methodology__title">{{ $t('methodology.title') }}</h2>
+  <section id="methodology" ref="elementRef" class="methodology section section--wide"
+    :class="{ 'methodology--visible': isVisible }">
+    <!-- <div class="container"> -->
+    <p class="methodology__hud-label">// METODOLOGÍA</p>
+    <h2 class="methodology__title">{{ $t('methodology.title') }}</h2>
 
-      <div class="methodology__timeline">
-        <div
-          v-for="(step, index) in steps"
-          :key="index"
-          class="methodology__step"
-        >
-          <div class="methodology__step-marker">
-            <span class="methodology__step-number">{{ String(index + 1).padStart(2, '0') }}</span>
-          </div>
-          <div v-if="index < steps.length" class="methodology__step-connector"></div>
-          <div class="methodology__step-content">
-            <h3 class="methodology__step-title">{{ step.title }}</h3>
-            <p class="methodology__step-desc">{{ step.description }}</p>
-          </div>
+    <!-- <div class="methodology__timeline">
+      <div v-for="(step, index) in steps" :key="index" class="methodology__step">
+        <div class="methodology__step-marker">
+          <span class="methodology__step-number">{{ String(index + 1).padStart(2, '0') }}</span>
+        </div>
+        <div v-if="index < steps.length" class="methodology__step-connector"></div>
+        <div class="methodology__step-content">
+          <h3 class="methodology__step-title">{{ step.title }}</h3>
+          <p class="methodology__step-desc">{{ step.description }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
+    <Carrusel3D />
+    <!-- </div> -->
   </section>
 </template>
 
 <script setup>
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
+import Carrusel3D from '@/components/layout/Carrusel3D.vue'
 
 const { elementRef, isVisible } = useScrollAnimation()
 
@@ -54,9 +53,12 @@ const steps = [
 </script>
 
 <style scoped>
-/* .methodology {
-  background-color: var(--cyber-black);
-} */
+.methodology {
+  /* background-color: var(--cyber-black); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .methodology__hud-label {
   font-family: var(--font-hud);
@@ -72,7 +74,7 @@ const steps = [
   font-family: var(--font-display);
   font-size: 2.5rem;
   text-align: left;
-  margin-bottom: var(--space-xl);
+  /* margin-bottom: var(--space-xl); */
   color: var(--text-primary);
   text-transform: uppercase;
 }
@@ -80,8 +82,9 @@ const steps = [
 .methodology__timeline {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-wrap: wrap;
+  width: 100%;
   gap: 0;
   overflow-x: auto;
   padding: var(--space-md);
@@ -90,10 +93,13 @@ const steps = [
 
 .methodology__step {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   gap: 0;
   flex-shrink: 0;
-  max-width: 15%;
+  /* max-width: 15%; */
+  flex: 1 1 30%;
+  max-width: 30%;
+  min-width: 0;
   scroll-snap-align: start;
   margin: var(--space-sm);
 }
@@ -146,6 +152,8 @@ const steps = [
   padding: var(--space-lg);
   transition: box-shadow var(--transition-fast);
   position: relative;
+
+  min-width: 0;
 }
 
 .methodology__step-content::before {
@@ -175,6 +183,8 @@ const steps = [
   font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.4;
+
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 768px) {
@@ -216,6 +226,7 @@ const steps = [
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
