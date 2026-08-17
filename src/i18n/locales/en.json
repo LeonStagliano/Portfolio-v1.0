@@ -51,7 +51,33 @@
     }
   },
   "methodology": {
-    "title": "Work Methodology"
+    "title": "Work Methodology",
+    "steps": {
+      "step_1": {
+        "title": "Discovery",
+        "description": "Research and analysis of requirements to understand the needs of the project."
+      },
+      "step_2": {
+        "title": "Design",
+        "description": "Creation of wireframes, prototypes and definition of the design system."
+      },
+      "step_3": {
+        "title": "Design Proposals",
+        "description": "Presenting design concepts to facilitate informed decision-making for the final outcome."
+      },
+      "step_4": {
+        "title": "Development",
+        "description": "Implementation with modern technologies and good coding practices."
+      },
+      "step_5": {
+        "title": "Testing",
+        "description": "Functionality, accessibility and performance testing."
+      },
+      "step_6": {
+        "title": "Deploy",
+        "description": "Publication and monitoring of the project in production."
+      }
+    }
   },
   "experience": {
     "title": "Work Experience"

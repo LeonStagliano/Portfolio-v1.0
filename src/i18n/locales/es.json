@@ -51,7 +51,33 @@
     }
   },
   "methodology": {
-    "title": "Metodología de trabajo"
+    "title": "Metodología de trabajo",
+    "steps":{
+      "step_1": {
+        "title": "Descubrimiento",
+        "description": "Investigación y análisis de los requisitos para entender las necesidades del proyecto."
+      },
+      "step_2": {
+        "title": "Diseño",
+        "description": "Creación de wireframes, prototipos y definición del sistema de diseño."
+      },
+      "step_3": {
+        "title": "Propuestas",
+        "description": "Presentación de las propuestas de diseño para facilitar una toma de decisiones informada para el resultado final."
+      },
+      "step_4": {
+        "title": "Desarrollo",
+        "description": "Implementación con tecnologías modernas y buenas prácticas de código."
+      },
+      "step_5": {
+        "title": "Testeo",
+        "description": "Pruebas de funcionalidad, accesibilidad y rendimiento."
+      },
+      "step_6": {
+        "title": "Despliegue",
+        "description": "Publicación y monitoreo del proyecto en producción."
+      }
+    }
   },
   "experience": {
     "title": "Experiencia profesional"
