@@ -1,7 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { RouterView } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import LoadingScreen from '@/components/ui/LoadingScreen.vue'
+
+const { locale } = useI18n()
+const SUPPORTED_LANGS = ['es', 'en']
+
+watch(locale, (lang) => {
+  document.documentElement.lang = SUPPORTED_LANGS.includes(lang) ? lang : 'es'
+}, { immediate: true })
 
 const isLoaded = ref(false)
 const isReady = ref(false)
