@@ -21,13 +21,30 @@
   },
   "about": {
     "title": "About Me",
-    "flipButton": "See personal side",
+    "personalSide": "Personal Background",
+    "personalProfile": "Adventurous, Curious and Creative",
+    "personalDescription": "Beyond web development, I consider myself a curious and creative person, driven by a constant desire for adventure, discovery, and learning. If there is something that truly defines me, it is my passion for creating things and understanding how they work — from digital products and interactive experiences to music and hands-on projects.\n\nI have a strong connection with travel and nature, and I enjoy experiences that take me outside my comfort zone, whether camping, trekking, sailing, cycling, snowboarding, or playing football and padel. I also have a strong creative side: I play piano and violin, enjoy exploring audiovisual storytelling through films and series, and find inspiration and enjoyment in fantasy literature, video games, and board games. My interest in games has even led me to explore game development through personal projects.\n\nI believe these interests reflect the same curiosity and mindset I bring to my professional work: the desire to explore, experiment, understand, and turn ideas into something tangible. I enjoy challenges, learning by doing, and finding different ways to approach a problem. I believe that this curiosity and this way of facing challenges are also an important part of what I bring as a developer.",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "professionalSide": "Professional Profile",
+    "professionalProfile": "Problem-solver, Detail-oriented and efficient",
     "professionalDescription": "My professional career has always been driven by understanding problems, coordinating people, and building effective solutions. Today, I apply that experience to web application development, combining creativity, leadership, communication, and analytical thinking with continuous learning in Frontend technologies. I am motivated by building clear, accessible, and functional digital solutions that deliver real value to users, while working with responsibility, sound judgment, and a continuous improvement mindset.",
-    "personalDescription": "",
-    "personalSide": "Personal side",
-    "professionalSide": "Professional side",
-    "showPersonal": "Show personal side",
-    "showProfessional": "Show professional side"
+    "showPersonal": "Show Personal Background",
+    "showProfessional": "Show Professional Profile",
+    "activities": {
+      "sailing": "Sailing",
+      "camping": "Camping",
+      "trekking": "Trekking",
+      "design": "Design & Creativity",
+      "woodWork": "Woodworking",
+      "photography": "Photography",
+      "sports": "Sports",
+      "audiovisuals": "Audiovisual Content",
+      "music": "Music",
+      "gaming": "Gaming",
+      "gameDev": "Game Development",
+      "reading": "Reading"
+    }
   },
   "skills": {
     "title": "Skills",

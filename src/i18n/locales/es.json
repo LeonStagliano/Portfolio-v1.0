@@ -21,13 +21,30 @@
   },
   "about": {
     "title": "Sobre mí",
-    "flipButton": "Ver lado personal",
+    "personalSide": "Intereses Personales",
+    "personalProfile": "Aventurero, Curioso y Creativo",
+    "personalDescription": "Más allá del desarrollo web, me considero una persona curiosa y creativa, impulsada por un deseo constante de aventura, descubrimiento y aprendizaje. Si hay algo que realmente me define, es mi pasión por crear cosas y comprender cómo funcionan, desde productos digitales y experiencias interactivas hasta la música y los proyectos prácticos.\n\nTengo una fuerte conexión con los viajes y la naturaleza, y disfruto especialmente de aquellas experiencias que me llevan fuera de mi zona de confort, ya sea acampando, haciendo trekking, navegando, practicando ciclismo, snowboard, fútbol o pádel. También tengo una marcada faceta creativa: toco el piano y el violín, disfruto explorando la narrativa audiovisual a través de películas y series, y encuentro inspiración y disfrute en la literatura fantástica, los videojuegos y los juegos de mesa. Mi interés por los videojuegos incluso me ha llevado a explorar su desarrollo a través de proyectos personales.\n\nCreo que todos estos intereses reflejan la misma curiosidad y mentalidad que aplico a mi trabajo profesional: el deseo de explorar, experimentar, comprender y convertir ideas en algo tangible. Disfruto de los desafíos, de aprender haciendo y de encontrar diferentes formas de abordar un problema. Creo que esa curiosidad y esa forma de afrontar los desafíos también son una parte importante de lo que aporto como desarrollador.",
+    "seeMore": "Ver más",
+    "seeLess": "Ver menos",
+    "professionalSide": "Perfil Profesional",
+    "professionalProfile": "Resolutivo, detallista y eficiente",
     "professionalDescription": "Mi carrera profesional siempre ha estado ligada a comprender problemas, coordinar personas y construir soluciones. Hoy aplico esa experiencia al desarrollo de aplicaciones web, combinando creatividad, liderazgo, comunicación y capacidad de análisis con una formación continua en tecnologías Frontend. Me motiva desarrollar soluciones digitales claras, accesibles y funcionales que aporten valor real a las personas, trabajando con responsabilidad, criterio y una actitud de mejora continua.",
-    "personalDescription": "",
-    "personalSide": "Lado personal",
-    "professionalSide": "Lado profesional",
-    "showPersonal": "Mostrar lado personal",
-    "showProfessional": "Mostrar lado profesional"
+    "showPersonal": "Mostrar Intereses Personales",
+    "showProfessional": "Mostrar Perfil Profesional",
+    "activities": {
+      "sailing": "Navegación a vela",
+      "camping": "Campismo",
+      "trekking": "Trekking",
+      "design": "Diseño y Creatividad",
+      "woodWork": "Trabajo en madera",
+      "photography": "Fotografía",
+      "sports": "Deportes",
+      "audiovisuals": "Contenido Audiovisual",
+      "music": "Música",
+      "gaming": "Gaming",
+      "gameDev": "Desarrollo de Videojuegos",
+      "reading": "Lectura"
+    }
   },
   "skills": {
     "title": "Habilidades",
