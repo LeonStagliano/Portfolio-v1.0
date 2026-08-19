@@ -179,7 +179,7 @@ watch(locale, () => {
   font-family: var(--font-hud);
   font-size: var(--text-sm);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.01em;
   animation: float 2s ease-in-out infinite;
   z-index: 1;
 }

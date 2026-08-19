@@ -2,7 +2,8 @@
     <div class="banner" @wheel.prevent="onWheel" 
     @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
         <div class="slider" ref="sliderEl" :style="{ '--quantity': steps.length, '--angle': angle + 'deg' }">
-                <div v-for="(step, index) in steps" :key="index" class="item methodology__step" 
+                <div v-for="(step, index) in steps" :key="index" class="item methodology__step"
+                :class="{ 'is-front': index === frontIndex }"
                 :style="{'--position': index + 1, '--depth': depthFor(index)}">
                     <div class="methodology__step-marker">
                         <span class="methodology__step-number">{{ String(index + 1).padStart(2, '0') }}</span>
@@ -18,34 +19,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const steps = [
-    {
-        title: 'Discovery',
-        description: 'Investigación y análisis de requisitos para entender las necesidades del proyecto.'
-    },
-    {
-        title: 'Diseño',
-        description: 'Creación de wireframes, prototipos y definición del sistema de diseño.'
-    },
-    {
-        title: 'Desarrollo',
-        description: 'Implementación con tecnologías modernas y buenas prácticas de código.'
-    },
-    {
-        title: 'Testing',
-        description: 'Pruebas de funcionalidad, accesibilidad y rendimiento.'
-    },
-    {
-        title: 'Deploy',
-        description: 'Publicación y monitoreo del proyecto en producción.'
-    }
-]
+const { tm } = useI18n()
+
+const steps = computed(() => Object.values(tm('methodology.steps')))
 
 const angle = ref(0)
 const sliderEl = ref(null)
-const stepAngle = 360 / steps.length
+const stepAngle = 360 / steps.value.length
 const SENSITIVITY = 0.3
 const FLING_THRESHOLD = 0.05
 const FLING_STOP = 0.01
@@ -61,15 +44,30 @@ const onWheel = (e) => {
     const delta = e.deltaY !== 0 ? e.deltaY : e.deltaX
     const step = 10
     angle.value += delta > 0 ? -step : step
-    // angle.value = ((angle.value % 360) + 360) % 360
 }
 
 const depthFor = (index) => {
     const offset = angle.value + index * stepAngle
     const normalized = ((offset % 360) + 360) % 360
     const distance = Math.min(normalized, 360 - normalized)
-    return Math.round(distance / 180)
+    if (distance <= stepAngle / 2) return 0
+    return Math.pow(distance / 180, 1.5)
 }
+
+const frontIndex = computed(() => {
+    let best = 0
+    let bestDist = Infinity
+    steps.value.forEach((_, index) => {
+        const offset = angle.value + index * stepAngle
+        const normalized = ((offset % 360) + 360) % 360
+        const distance = Math.min(normalized, 360 - normalized)
+        if (distance < bestDist) {
+            bestDist = distance
+            best = index
+        }
+    })
+    return best
+})
 
 const onTouchStart = (e) => {
     stopFling()
@@ -116,7 +114,7 @@ const stopFling = () => {
     if (rafId) cancelAnimationFrame(rafId)
     rafId = null
     if (isFlinging) {
-        sliderEl.value?.classList.remove('no-transiton')
+        sliderEl.value?.classList.remove('no-transition')
         isFlinging = false
     }
 }
@@ -128,42 +126,33 @@ const stopFling = () => {
     justify-content: center;
     padding: var(--space-lg);
     touch-action: pan-y;
-
-
-    /* width: 100%; */
-    /*height: 100dvh;*/ /* 100dvh */
-    /* text-align: center; */
-    /* position: relative; */
-    /* overflow: hidden; */
+    overflow: hidden;
+    container-type: inline-size;
+    width: 100%;
+    position: relative;
 }
 
 .banner .slider {
-    /* position: absolute; */
-    width: 280px;
-    height: 280px;
-    /* top: 10%; */
-    /* left: calc(50% - 100px); */
-
-    /* top: 50%; */
-    /* left: 50%; */
-    /* margin-top: -140px; */
-    /* margin-left: -140px; */
-
+    position: relative;
+    --cardW: clamp(150px, 42cqi, 200px);
+    width: var(--cardW);
+    height: clamp(240px, 67.2cqi, 280px);
     transform-style: preserve-3d;
-    transform: perspective(1600px) rotateY(var(--angle, 0deg));
+    transform: perspective(1800px) rotateY(var(--angle, 0deg));
     transition: transform .1s ease-out;
-
-
 }
 
 .banner .slider .item {
     position: absolute;
-    inset: 0 0 0 0;
-    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))  translateZ(clamp(150px, 22vmin, 300px));
-
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    min-height: clamp(187.5px, 52.5cqi, 250px);
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))  translateZ(clamp(160px, 44cqi, 210px));
     filter: blur(calc(var(--depth) * 6px))
-        brightness(calc(1 - var(--depth) * 0.55));
-    transition: filter .5s ease-out;
+        brightness(calc(1 - var(--depth) * 1));
+    transition: filter .15s ease-out;
 }
 
 .banner .slider.no-transition {
@@ -172,51 +161,41 @@ const stopFling = () => {
 
 .methodology__step {
     display: flex;
-    /* align-items: flex-start; */
-    /* gap: 0; */
-    /* flex-shrink: 0; */
-    /* max-width: 15%; */
-    /* flex: 1 1 30%; */
-    /* max-width: 30%; */
-    /* min-width: 0; */
-    /* scroll-snap-align: start; */
-    /* margin: var(--space-sm); */
 }
 
 .methodology__step-marker {
     flex-shrink: 0;
-    width: 60px;
-    height: 60px;
+    padding: var(--space-sm);
     background-color: var(--cyber-panel);
     border: 1px solid var(--main-color);
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     box-shadow: var(--glow-magenta);
-    transition: all var(--transition-fast);
-    clip-path: var(--clip-angular);
+    transition: all var(--transition-slow);
+    clip-path: var(--clip-notch-bottom);
 }
 
-.methodology__step:hover .methodology__step-marker {
+.methodology__step.is-front .methodology__step-marker {
     background-color: var(--main-color);
     box-shadow: 0 0 20px rgba(255, 42, 109, 0.8);
 }
 
 .methodology__step-number {
     font-family: var(--font-hud);
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vmin, 2rem);
     font-weight: 700;
-    color: var(--neon-magenta);
+    color: var(--main-color);
     transition: color var(--transition-fast);
 }
 
-.methodology__step:hover .methodology__step-number {
-    color: var(--cyber-black);
+.methodology__step.is-front .methodology__step-number {
+    color: var(--cyber-panel);
 }
 
 .methodology__step-connector {
     flex-shrink: 0;
-    width: 40px;
+    width: 5px;
     height: 2px;
     background: var(--neon-magenta);
     margin-top: 29px;
@@ -226,9 +205,10 @@ const stopFling = () => {
 
 .methodology__step-content {
     flex: 1;
+    min-width: 0;
     background-color: var(--cyber-panel);
     border: .5px solid var(--main-color);
-    padding: var(--space-lg);
+    padding: clamp(0.75rem, 1.5vmin, 1.5rem);
     transition: box-shadow var(--transition-fast);
     position: relative;
 }
@@ -243,13 +223,14 @@ const stopFling = () => {
     background: var(--neon-magenta);
 }
 
-.methodology__step:hover .methodology__step-content {
+.methodology__step.is-front .methodology__step-content {
     box-shadow: var(--glow-magenta);
 }
 
 .methodology__step-title {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: clamp(0.7rem, calc(var(--cardW) * 0.08), 1.3rem);
+
     color: var(--neon-magenta);
     margin-bottom: var(--space-sm);
     text-transform: uppercase;
@@ -257,8 +238,9 @@ const stopFling = () => {
 
 .methodology__step-desc {
     font-family: var(--font-hud);
-    font-size: var(--text-sm);
+    font-size: clamp(0.7rem, 0.95vmin, 0.9rem);
     color: var(--text-secondary);
     line-height: 1.4;
+    overflow-wrap:normal;
 }
 </style>
