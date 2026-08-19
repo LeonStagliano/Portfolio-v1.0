@@ -80,6 +80,16 @@
     }
 }
 
+@keyframes swing {
+    0%,
+    100% {
+        translate: 0
+    }
+    50% {
+        translate: -6px
+    }
+}
+
 @keyframes blink {
     0%,
     100% {
