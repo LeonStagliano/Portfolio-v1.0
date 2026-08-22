@@ -51,7 +51,7 @@ import { useWindowSize } from '@/composables/useWindowSize'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 import Methodology from '@/components/sections/Methodology.vue'
-import InterestsList from '../layout/InterestsList.vue'
+import InterestsList from '@/components/ui/InterestsList.vue'
 
 const { width } = useWindowSize()
 const { elementRef, isVisible } = useScrollAnimation()
@@ -79,8 +79,8 @@ const flipCard = () => {
   background-image: repeating-linear-gradient(-45deg,
       transparent,
       transparent 10px,
-      rgba(255, 42, 109, 0.02) 10px,
-      rgba(255, 42, 109, 0.02) 11px);
+      rgba(250, 0, 175, 0.04) 10px,
+      rgba(250, 0, 175, 0.04) 11px);
 }
 
 .about__layout {
@@ -224,30 +224,6 @@ const flipCard = () => {
   transition: all var(--transition-fast);
 }
 
-/* .about__skills-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  justify-content: center;
-}
-
-.about__skill-badge {
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--cyber-surface);
-  border: 1px solid var(--neon-magenta);
-  font-family: var(--font-hud);
-  font-size: 0.85rem;
-  color: var(--neon-magenta);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
-}
-
-.about__skill-badge:hover {
-  background-color: var(--neon-magenta);
-  color: var(--cyber-black);
-} */
-
 .about__subtitle {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -263,8 +239,8 @@ const flipCard = () => {
   margin: var(--space-md) 0;
   padding: var(--space-md) var(--space-lg);
   background-color: transparent;
-  border: 2px solid var(--neon-magenta);
-  color: var(--neon-magenta);
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
   font-family: var(--font-display);
   font-weight: 700;
   text-transform: uppercase;
@@ -278,7 +254,7 @@ const flipCard = () => {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--neon-magenta);
+  background: var(--main-color);
   transform: translateX(-101%);
   transition: transform var(--transition-fast);
   z-index: -1;
