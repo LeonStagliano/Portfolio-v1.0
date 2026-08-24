@@ -48,8 +48,29 @@
   },
   "skills": {
     "title": "Skills",
-    "techStack": "Tech Stack",
-    "softSkills": "Soft Skills"
+    "techStackTitle": "Tech Stack",
+    "softSkillsTitle": "Soft Skills",
+    "hardSkills": {
+      "responsive": "Responsive Design",
+      "aiDEV": "AI-Assisted Development"
+    },
+    "softSkills": {
+      "teamwork": "Teamwork",
+      "leadership": "Leadership",
+      "communication": "Effective Communication",
+      "problemSolving": "Problem-Solving",
+      "creativity": "Creativity",
+      "underPressureWork": "Under Pressure Work",
+      "analyticalThinking": "Analytical Thinking",
+      "continuousLearning": "Continuous Learning",
+      "userOriented": "User-Oriented",
+      "detailOriented": "Detail-Oriented",
+      "adaptability": "Adaptability",
+      "scrum": "Agile/SCRUM Mindset",
+      "empathy": "Empathy",
+      "mentoring": "Mentoring",
+      "efficiency": "Efficiency"
+    }
   },
   "projects": {
     "title": "Projects",

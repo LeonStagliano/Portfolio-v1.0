@@ -48,8 +48,29 @@
   },
   "skills": {
     "title": "Habilidades",
-    "techStack": "Stack Tecnológico",
-    "softSkills": "Habilidades Blandas"
+    "techStackTitle": "Stack Tecnológico",
+    "softSkillsTitle": "Habilidades Blandas",
+    "hardSkills": {
+      "responsive": "Diseño Responsive",
+      "aiDEV": "Desarrollo con IA"
+    },
+    "softSkills": {
+      "teamwork": "Trabajo en Equipo",
+      "leadership": "Liderazgo",
+      "communication": "Comunicación Efectiva",
+      "problemSolving": "Solución de Problemas",
+      "creativity": "Creatividad",
+      "underPressureWork": "Trabajo bajo Presión",
+      "analyticalThinking": "Pensamiento Analítico",
+      "continuousLearning": "Aprendizaje Continuo",
+      "userOriented": "Orientado al Usuario",
+      "detailOriented": "Atención al Detalle",
+      "adaptability": "Adaptabilidad",
+      "scrum": "Metodologías Agile/SCRUM",
+      "empathy": "Empatía",
+      "mentoring": "Mentoría y Formación",
+      "efficiency": "Eficiencia"
+    }
   },
   "projects": {
     "title": "Proyectos",
