@@ -34,13 +34,14 @@ const toggleLang = () => {
     background: none;
     border: none;
     border-radius: .5rem;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .language {
     border: 1px solid var(--disabled-color);
     padding: 4px;
     color: var(--disabled-color);
+    opacity: 0.5;
     font-family: var(--font-hud);
     font-size: 0.875rem;
     font-weight: 500;
@@ -49,7 +50,9 @@ const toggleLang = () => {
 
 .selected{
     color: var(--main-color);
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--border);
     font-weight: 700;
+    box-shadow: 0 0 4px var(--main-color);
+    opacity: 1;
 }
 </style>
