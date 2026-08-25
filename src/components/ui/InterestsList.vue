@@ -119,8 +119,9 @@ import WoodWorkIcon from '@/components/icons/interests/WoodWorkIcon.vue'
     width: clamp(40px, 6vw, 54px);
     height: clamp(40px, 6vw, 54px);
     margin: var(--space-sm);
-    background-color: var(--cyber-surface);
-    border: 1px solid var(--neon-magenta);
+    background: none;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 4px var(--border);
     color: var(--neon-magenta);
     flex-shrink: 0;
     transform: rotate(45deg);
