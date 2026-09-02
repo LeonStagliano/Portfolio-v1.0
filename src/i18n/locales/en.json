@@ -129,8 +129,17 @@
     "title": "Contact",
     "name": "Name",
     "email": "Email",
+    "subject": "Subject",
     "message": "Message",
-    "send": "Send"
+    "send": "Send",
+    "sent": "Sent",
+    "sendSuccess": "Message sent successfully",
+    "sendError": "Error sending. Please try again.",
+    "status": "Available for work",
+    "copied": "Email Copied!",
+    "cv": "View CV",
+    "cvTitle": "Curriculum Vitae",
+    "cvDownload": "Download PDF"
   },
   "footer": {
     "rights": "All rights reserved."

@@ -90,7 +90,7 @@
   },
   "methodology": {
     "title": "Metodología de trabajo",
-    "steps":{
+    "steps": {
       "step_1": {
         "title": "Descubrimiento",
         "description": "Investigación y análisis de los requisitos para entender las necesidades del proyecto."
@@ -129,8 +129,17 @@
     "title": "Contacto",
     "name": "Nombre",
     "email": "Email",
+    "subject": "Asunto",
     "message": "Mensaje",
-    "send": "Enviar"
+    "send": "Enviar",
+    "sent": "Enviado",
+    "sendSuccess": "Mensaje enviado correctamente",
+    "sendError": "Error al enviar. Intentá de nuevo.",
+    "status": "Disponible para trabajar",
+    "copied": "¡Email Copiado!",
+    "cv": "Ver CV",
+    "cvTitle": "Currículum Vitae",
+    "cvDownload": "Descargar PDF"
   },
   "footer": {
     "rights": "Todos los derechos reservados."
