@@ -1,5 +1,5 @@
 <template>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    <svg :width="size" :height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
         <polyline points="15 3 21 3 21 9" />
@@ -11,7 +11,7 @@
 defineProps({
     size: {
         type: [Number, String],
-        default: 24
+        default: 22
     },
     isDark: {
         type: Boolean,
