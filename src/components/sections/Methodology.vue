@@ -16,7 +16,7 @@
 
 <script setup>
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
-import Carrusel3D from '@/components/layout/Carrusel3D.vue'
+import Carrusel3D from '@/components/ui/Carrusel3D.vue'
 
 const { elementRef, isVisible } = useScrollAnimation()
 </script>
@@ -38,7 +38,7 @@ const { elementRef, isVisible } = useScrollAnimation()
   color: var(--neon-magenta);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   opacity: 0.8;
 }
 

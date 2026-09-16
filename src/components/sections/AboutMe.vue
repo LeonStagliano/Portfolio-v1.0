@@ -88,8 +88,9 @@ const flipCard = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  margin: var(--space-lg);
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--space-lg);
 }
 
 .about__header {
@@ -103,7 +104,7 @@ const flipCard = () => {
   color: var(--neon-magenta);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   opacity: 0.8;
 }
 
@@ -189,7 +190,7 @@ const flipCard = () => {
   font-family: var(--font-display);
   text-transform: uppercase;
   font-size: clamp(1.5rem, 2rem, 3rem);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-2xs);
   color: var(--text-primary)
 }
 
@@ -219,7 +220,7 @@ const flipCard = () => {
   font-family: var(--font-hud);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-2xs) var(--space-md);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -284,9 +285,9 @@ const flipCard = () => {
 }
 
 @media (min-width: 768px) {
-  .about__layout {
+  /* .about__layout {
     max-width: 1280px;
-  }
+  } */
 
   .professional-description__container .about__description {
     padding: var(--space-lg);

@@ -145,7 +145,7 @@ watch(locale, () => {
   align-self: self-start;
   letter-spacing: -1px;
   color: var(--main-color);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .hero__role {
