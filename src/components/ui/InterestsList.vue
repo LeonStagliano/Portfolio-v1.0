@@ -104,7 +104,7 @@ import WoodWorkIcon from '@/components/icons/interests/WoodWorkIcon.vue'
     display: flex;
     align-items: center;
     gap: var(--space-md);
-    padding: var(--space-sm);
+    padding: var(--space-xs);
     border-bottom: 1px solid var(--cyber-border);
 }
 
@@ -118,7 +118,7 @@ import WoodWorkIcon from '@/components/icons/interests/WoodWorkIcon.vue'
     justify-content: center;
     width: clamp(40px, 6vw, 54px);
     height: clamp(40px, 6vw, 54px);
-    margin: var(--space-sm);
+    margin: var(--space-xs);
     background: none;
     border: 1px solid var(--border);
     box-shadow: 0 0 4px var(--border);
