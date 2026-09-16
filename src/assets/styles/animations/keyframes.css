@@ -129,6 +129,16 @@
     }
 }
 
+@keyframes led-pulse {
+    0%, 100% {
+        background-color: var(--led-color, var(--border));
+    }
+    50% {
+        background-color: var(--light-color, var(--main-color));
+        box-shadow: 0 0 20px var(--light-color, var(--main-color))
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -139,4 +149,10 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes box-flash {
+    0%   { box-shadow: 0 0 0 0 var(--main-color); }
+    50%  { box-shadow: 0 0 15px 2px var(--main-color); }
+    100% { box-shadow: 0 0 0 0 var(--main-color); }
 }
