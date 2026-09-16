@@ -1,0 +1,1 @@
+import{b as e,f as t,g as n,j as r,k as i,u as a,w as o,x as s,y as c}from"./index-BV2ULn5K.js";var l=a({__name:`NotFoundView`,setup(a){return(a,l)=>(o(),c(`main`,null,[l[1]||=n(`h1`,null,`404`,-1),l[2]||=n(`p`,null,`Página no encontrada`,-1),s(r(t),{to:`/`},{default:i(()=>[...l[0]||=[e(`Volver al inicio`,-1)]]),_:1})]))}},[[`__scopeId`,`data-v-e80d030f`]]);export{l as default};
