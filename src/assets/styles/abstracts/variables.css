@@ -47,8 +47,9 @@
     --text-7xl: 5.5rem;
 
     /* === Spacing === */
-    --space-xs: 0.25rem;
-    --space-sm: 0.5rem;
+    --space-2xs: 0.25rem;
+    --space-xs: 0.50rem;
+    --space-sm: 0.75rem;
     --space-md: 1rem;
     --space-lg: 2rem;
     --space-xl: 4rem;
