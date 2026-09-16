@@ -94,7 +94,7 @@ onUnmounted(() => {
     left: 0;
     color: var(--cyber-black);
     background-color: var(--neon-magenta);
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-xs) var(--space-md);
     z-index: 1000;
     transition: top var(--transition-fast);
     font-family: var(--font-hud);
@@ -111,7 +111,7 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     z-index: 200;
-    padding: var(--space-sm) 0;
+    padding: var(--space-xs) 0;
 }
 
 .navbar--scrolled,
@@ -146,7 +146,7 @@ onUnmounted(() => {
     display: none;
     flex-direction: column;
     gap: 4px;
-    padding: var(--space-sm);
+    padding: var(--space-xs);
     background: none;
     border: none;
 }
@@ -175,7 +175,7 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     grid-row: 2;
     grid-column: span 10;
     padding: 0;
