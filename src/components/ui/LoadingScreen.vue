@@ -89,8 +89,8 @@ onMounted(() => {
 .loading-screen__header {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
   background: var(--neon-magenta);
 }
 
@@ -116,14 +116,14 @@ onMounted(() => {
 
 .loading-screen__line {
   color: var(--neon-magenta);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   opacity: 0;
   animation: fadeInLine 0.3s ease forwards;
 }
 
 .loading-screen__prompt {
   color: var(--neon-red);
-  margin-right: var(--space-sm);
+  margin-right: var(--space-xs);
 }
 
 @keyframes fadeInLine {
